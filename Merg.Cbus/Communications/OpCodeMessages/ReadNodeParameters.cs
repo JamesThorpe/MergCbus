@@ -4,7 +4,9 @@
     public class ReadNodeParameterByIndexMessage : CbusMessageWithNodeNumber
     {
         public ReadNodeParameterByIndexMessage() : this(new byte[3]) { }
-        public ReadNodeParameterByIndexMessage(byte[] data) : base(OpCodes.Rqnpn, data) { }
+        public ReadNodeParameterByIndexMessage(byte[] data) : base(OpCodes.Rqnpn, data) {
+            EnsureDataLength(data, 3);
+        }
 
         public byte ParameterIndex {
             get => Data[2];

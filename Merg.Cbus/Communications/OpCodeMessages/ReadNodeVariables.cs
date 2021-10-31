@@ -19,7 +19,9 @@
     public class ReadNodeVariableAnswerMessage : CbusMessageWithNodeNumber
     {
         public ReadNodeVariableAnswerMessage() : this(new byte[4]) { }
-        public ReadNodeVariableAnswerMessage(byte[] data) : base(OpCodes.Nvans, data) { }
+        public ReadNodeVariableAnswerMessage(byte[] data) : base(OpCodes.Nvans, data) {
+            EnsureDataLength(data, 4);
+        }
 
         public byte VariableIndex {
             get => Data[2];

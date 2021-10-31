@@ -9,8 +9,7 @@ namespace Merg.Cbus.Communications
     {
         public string TransportString
         {
-            get
-            {
+            get {
                 var ts = new StringBuilder(20);
                 ts.Append(":S");
                 ts.Append(SidH.ToString("X2"));

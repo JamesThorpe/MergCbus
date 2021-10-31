@@ -11,7 +11,8 @@
     [CbusMessage(OpCodes.Qnn)]
     public class QueryAllNodesMessage : CbusMessage
     {
-        public QueryAllNodesMessage() : base(OpCodes.Qnn, new byte[0]) { }
+        public QueryAllNodesMessage() : this(new byte[0]) { }
+        public QueryAllNodesMessage(byte[] data) : base(OpCodes.Qnn, data) { }
 
         public override string DisplayString => "Query all nodes";
     }

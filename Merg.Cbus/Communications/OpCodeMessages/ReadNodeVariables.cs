@@ -3,7 +3,8 @@
     [CbusMessage(OpCodes.Nvrd)]
     public class ReadNodeVariableMessage : CbusMessageWithNodeNumber
     {
-        public ReadNodeVariableMessage() : base(OpCodes.Nvrd, new byte[3]) { }
+        public ReadNodeVariableMessage() : this(new byte[3]) { }
+        public ReadNodeVariableMessage(byte[] data) : base(OpCodes.Nvrd, data) { }
 
         public byte VariableIndex {
             get => Data[2];
@@ -17,7 +18,8 @@
     [CbusMessage(OpCodes.Nvans)]
     public class ReadNodeVariableAnswerMessage : CbusMessageWithNodeNumber
     {
-        public ReadNodeVariableAnswerMessage() : base(OpCodes.Nvans, new byte[4]) { }
+        public ReadNodeVariableAnswerMessage() : this(new byte[4]) { }
+        public ReadNodeVariableAnswerMessage(byte[] data) : base(OpCodes.Nvans, data) { }
 
         public byte VariableIndex {
             get => Data[2];

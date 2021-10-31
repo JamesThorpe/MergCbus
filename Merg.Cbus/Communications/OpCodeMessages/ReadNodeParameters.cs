@@ -3,7 +3,8 @@
     [CbusMessage(OpCodes.Rqnpn)]
     public class ReadNodeParameterByIndexMessage : CbusMessageWithNodeNumber
     {
-        public ReadNodeParameterByIndexMessage() : base(OpCodes.Rqnpn, new byte[3]) { }
+        public ReadNodeParameterByIndexMessage() : this(new byte[3]) { }
+        public ReadNodeParameterByIndexMessage(byte[] data) : base(OpCodes.Rqnpn, data) { }
 
         public byte ParameterIndex {
             get => Data[2];
@@ -17,7 +18,7 @@
     [CbusMessage(OpCodes.Paran)]
     public class ReadNodeParameterByIndexResponseMessage : CbusMessageWithNodeNumber
     {
-        public ReadNodeParameterByIndexResponseMessage() : base(OpCodes.Paran, new byte[4]) { }
+        public ReadNodeParameterByIndexResponseMessage() : this(new byte[4]) { }
 
         public ReadNodeParameterByIndexResponseMessage(byte[] data) : base(OpCodes.Paran, data)
         {

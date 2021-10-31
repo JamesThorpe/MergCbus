@@ -20,6 +20,11 @@
     {
         public ReadNodeParameterByIndexResponseMessage() : base(Cbus.OpCodes.Paran, new byte[4]) { }
 
+        public ReadNodeParameterByIndexResponseMessage(byte[] data) :base(Cbus.OpCodes.Paran, data)
+        {
+
+        }
+
         public byte ParameterIndex
         {
             get => Data[2];

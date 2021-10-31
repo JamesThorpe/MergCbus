@@ -20,7 +20,11 @@ namespace Merg.Cbus.Communications
 
         private void HandleTransportMessage(object sender, TransportMessageEventArgs e)
         {
-            MessageReceived?.Invoke(this, new CbusMessageEventArgs(CbusMessage.FromTransportString(e.Message)));
+            try {
+                MessageReceived?.Invoke(this, new CbusMessageEventArgs(CbusMessage.FromTransportString(e.Message)));
+            }catch(Exception ex) {
+                throw;
+            }
         }
 
         public async Task<bool> SendMessage(CbusMessage message)

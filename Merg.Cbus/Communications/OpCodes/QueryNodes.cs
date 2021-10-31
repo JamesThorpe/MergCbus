@@ -22,6 +22,8 @@
     {
         public QueryNodesResponseMessage() : base(Cbus.OpCodes.Pnn, new byte[5]) { }
 
+        public QueryNodesResponseMessage(byte[] data) : base(Cbus.OpCodes.Pnn, data) { }
+
         public byte ManufacturerId => Data[2];
         public byte ModuleId => Data[3];
 

@@ -5,12 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using Merg.Cbus.Communications;
-using Merg.Cbus.Communications.OpCodes;
+using Merg.Cbus.Communications.OpCodeMessages;
 using Xunit;
 
 namespace Merg.Cbus.Tests
 {
-    
+
     public class MessageParsingTests
     {
         [Fact]

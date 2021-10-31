@@ -38,7 +38,7 @@ namespace Merg.Cbus.Communications
         public byte[] Data { get; protected set; }
         public byte SidH { get; private set; }
         public byte SidL { get; private set; }
-        public Cbus.OpCodes OpCode { get; }
+        public OpCodes OpCode { get; }
 
         public string OpCodeString => OpCode.ToString().ToUpper();
 
@@ -71,7 +71,7 @@ namespace Merg.Cbus.Communications
             return DisplayString;
         }
 
-        public CbusMessage(Cbus.OpCodes opCode, byte[] data)
+        public CbusMessage(OpCodes opCode, byte[] data)
         {
             OpCode = opCode;
             Data = data;
@@ -107,7 +107,7 @@ namespace Merg.Cbus.Communications
             var opcodeType = GetOpCodeType(opCode);
             CbusMessage msg;
             if (opcodeType == null) {
-                msg = new CbusMessage((Cbus.OpCodes)opCode, dataBytes.Skip(1).ToArray());
+                msg = new CbusMessage((OpCodes)opCode, dataBytes.Skip(1).ToArray());
             } else {
                 msg = (CbusMessage)Activator.CreateInstance(opcodeType, (object)dataBytes.Skip(1).ToArray());
             }

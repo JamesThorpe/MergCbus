@@ -1,4 +1,4 @@
-﻿namespace Merg.Cbus.Communications.OpCodes
+﻿namespace Merg.Cbus.Communications.OpCodeMessages
 {
     //send:
     //:SBFA0N0D;
@@ -8,21 +8,21 @@
     //:SB020NB60100A5050F - ace8c
     //:SB040NB60101A5050F - ace8c
 
-    [CbusMessage(Cbus.OpCodes.Qnn)]
-    public class QueryAllNodesMessage:CbusMessage
+    [CbusMessage(OpCodes.Qnn)]
+    public class QueryAllNodesMessage : CbusMessage
     {
-        public QueryAllNodesMessage():base(Cbus.OpCodes.Qnn,new byte[0]) { }
+        public QueryAllNodesMessage() : base(OpCodes.Qnn, new byte[0]) { }
 
         public override string DisplayString => "Query all nodes";
     }
 
 
-    [CbusMessage(Cbus.OpCodes.Pnn)]
+    [CbusMessage(OpCodes.Pnn)]
     public class QueryNodesResponseMessage : CbusMessageWithNodeNumber
     {
-        public QueryNodesResponseMessage() : base(Cbus.OpCodes.Pnn, new byte[5]) { }
+        public QueryNodesResponseMessage() : base(OpCodes.Pnn, new byte[5]) { }
 
-        public QueryNodesResponseMessage(byte[] data) : base(Cbus.OpCodes.Pnn, data) { }
+        public QueryNodesResponseMessage(byte[] data) : base(OpCodes.Pnn, data) { }
 
         public byte ManufacturerId => Data[2];
         public byte ModuleId => Data[3];
@@ -32,6 +32,6 @@
         public bool InFlimMode => (Data[4] & 0b0100) == 0b0100;
         public bool SupportsBootloader => (Data[4] & 0b1000) == 0b1000;
 
-        public override string DisplayString => $"Query Node Response, Manufacturer Id {ManufacturerId}, Module Id {ModuleId}";
+        public override string DisplayString => $"Query Node Response, Manufacturer Id {ManufacturerId}, Module Id {ModuleId}, Consumer: {IsConsumerNode}, Producer: {IsProducerNode}, Flim: {InFlimMode}, SupportsBootloader: {SupportsBootloader}";
     }
 }

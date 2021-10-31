@@ -8,9 +8,9 @@ namespace Merg.Cbus.Communications
     [AttributeUsage(AttributeTargets.Class)]
     public class CbusMessageAttribute : Attribute
     {
-        public Cbus.OpCodes OpCode { get; }
+        public OpCodes OpCode { get; }
 
-        public CbusMessageAttribute(Cbus.OpCodes opCode)
+        public CbusMessageAttribute(OpCodes opCode)
         {
             OpCode = opCode;
         }

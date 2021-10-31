@@ -1,12 +1,11 @@
-﻿namespace Merg.Cbus.Communications.OpCodes
+﻿namespace Merg.Cbus.Communications.OpCodeMessages
 {
-    [CbusMessage(Cbus.OpCodes.Rqnpn)]
-    public class ReadNodeParameterByIndexMessage: CbusMessageWithNodeNumber
+    [CbusMessage(OpCodes.Rqnpn)]
+    public class ReadNodeParameterByIndexMessage : CbusMessageWithNodeNumber
     {
-        public ReadNodeParameterByIndexMessage() : base(Cbus.OpCodes.Rqnpn, new byte[3]) { }
+        public ReadNodeParameterByIndexMessage() : base(OpCodes.Rqnpn, new byte[3]) { }
 
-        public byte ParameterIndex
-        {
+        public byte ParameterIndex {
             get => Data[2];
             set => Data[2] = value;
         }
@@ -15,24 +14,22 @@
     }
 
 
-    [CbusMessage(Cbus.OpCodes.Paran)]
+    [CbusMessage(OpCodes.Paran)]
     public class ReadNodeParameterByIndexResponseMessage : CbusMessageWithNodeNumber
     {
-        public ReadNodeParameterByIndexResponseMessage() : base(Cbus.OpCodes.Paran, new byte[4]) { }
+        public ReadNodeParameterByIndexResponseMessage() : base(OpCodes.Paran, new byte[4]) { }
 
-        public ReadNodeParameterByIndexResponseMessage(byte[] data) :base(Cbus.OpCodes.Paran, data)
+        public ReadNodeParameterByIndexResponseMessage(byte[] data) : base(OpCodes.Paran, data)
         {
 
         }
 
-        public byte ParameterIndex
-        {
+        public byte ParameterIndex {
             get => Data[2];
             set => Data[2] = value;
         }
 
-        public byte ParameterValue
-        {
+        public byte ParameterValue {
             get => Data[3];
             set => Data[3] = value;
         }

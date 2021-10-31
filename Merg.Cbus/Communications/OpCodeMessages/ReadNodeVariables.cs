@@ -1,9 +1,9 @@
-﻿namespace Merg.Cbus.Communications.OpCodes
+﻿namespace Merg.Cbus.Communications.OpCodeMessages
 {
-    [CbusMessage(Cbus.OpCodes.Nvrd)]
+    [CbusMessage(OpCodes.Nvrd)]
     public class ReadNodeVariableMessage : CbusMessageWithNodeNumber
     {
-        public ReadNodeVariableMessage() : base(Cbus.OpCodes.Nvrd, new byte[3]) { }
+        public ReadNodeVariableMessage() : base(OpCodes.Nvrd, new byte[3]) { }
 
         public byte VariableIndex {
             get => Data[2];
@@ -14,10 +14,10 @@
             $"Read Node Variable, Node Number: {NodeNumber}, Variable Index: {VariableIndex}";
     }
 
-    [CbusMessage(Cbus.OpCodes.Nvans)]
+    [CbusMessage(OpCodes.Nvans)]
     public class ReadNodeVariableAnswerMessage : CbusMessageWithNodeNumber
     {
-        public ReadNodeVariableAnswerMessage():base(Cbus.OpCodes.Nvans, new byte[4]) { }
+        public ReadNodeVariableAnswerMessage() : base(OpCodes.Nvans, new byte[4]) { }
 
         public byte VariableIndex {
             get => Data[2];

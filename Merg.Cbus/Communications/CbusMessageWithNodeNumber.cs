@@ -4,7 +4,7 @@ using System;
 namespace Merg.Cbus.Communications {
     public abstract class CbusMessageWithNodeNumber : CbusMessage
     {
-        protected CbusMessageWithNodeNumber(Cbus.OpCodes opCode, byte[] data) : base(opCode, data)
+        protected CbusMessageWithNodeNumber(OpCodes opCode, byte[] data) : base(opCode, data)
         {
             EnsureDataLength(data, 2);
         }

@@ -1,7 +1,7 @@
 ﻿namespace Merg.Cbus.Communications {
     public abstract class CbusMessageWithNodeNumberAndEvent : CbusMessageWithNodeNumber
     {
-        protected CbusMessageWithNodeNumberAndEvent(Cbus.OpCodes opCode, byte[] data) : base(opCode, data)
+        protected CbusMessageWithNodeNumberAndEvent(OpCodes opCode, byte[] data) : base(opCode, data)
         {
             EnsureDataLength(data, 4);
         }

@@ -2,7 +2,7 @@
 using System.IO.Ports;
 using System.Threading.Tasks;
 using Merg.Cbus.Communications;
-using Merg.Cbus.Communications.OpCodes;
+using Merg.Cbus.Communications.OpCodeMessages;
 
 namespace ExampleUse
 {

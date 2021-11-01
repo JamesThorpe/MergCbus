@@ -8,6 +8,12 @@
             EnsureDataLength(data, 3);
         }
 
+        public ReadNodeParameterByIndexMessage(ushort nodeNumber, byte parameterIndex):this()
+        {
+            NodeNumber = nodeNumber;
+            ParameterIndex = parameterIndex;
+        }
+
         public byte ParameterIndex {
             get => Data[2];
             set => Data[2] = value;

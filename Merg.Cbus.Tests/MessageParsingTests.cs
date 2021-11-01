@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FluentAssertions;
+﻿using FluentAssertions;
 using Merg.Cbus.Communications;
 using Merg.Cbus.Communications.OpCodeMessages;
 using Xunit;
@@ -16,7 +11,7 @@ namespace Merg.Cbus.Tests
         [Fact]
         public void CbusMessage_ParsesBasicMessage()
         {
-            var m = CbusMessage.FromTransportString("SB020N9101000005");
+            var m = CbusMessage.FromTransportString(":SB020N9101000005;");
 
             m.Should().BeOfType<AcOffMessage>();
             var msg = (AcOffMessage) m;

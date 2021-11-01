@@ -1,11 +1,9 @@
 using FluentAssertions;
 using Merg.Cbus.Communications;
-using Moq;
 using System;
 using System.IO;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using Xunit;
 
 namespace Merg.Cbus.Tests
@@ -13,9 +11,9 @@ namespace Merg.Cbus.Tests
     public class StreamTransportTests
     {
         [Theory]
-        [InlineData(":somemsg;", "somemsg")]
-        [InlineData(":;", "")]
-        [InlineData(":s;", "s")]
+        [InlineData(":somemsg;", ":somemsg;")]
+        [InlineData(":;", ":;")]
+        [InlineData(":s;", ":s;")]
         public void StreamTransport_RaisesSingleEvent_ForEachSingleMessage(string input, string output)
         {
             var m = new MemoryStream(Encoding.ASCII.GetBytes(input));
@@ -37,10 +35,10 @@ namespace Merg.Cbus.Tests
 
 
         [Theory]
-        [InlineData("abc:somemsg;", "somemsg")]
-        [InlineData(":somemsg;123", "somemsg")]
-        [InlineData("abc:somemsg;123", "somemsg")]
-        [InlineData("a;bc:somemsg;123", "somemsg")]
+        [InlineData("abc:somemsg;", ":somemsg;")]
+        [InlineData(":somemsg;123", ":somemsg;")]
+        [InlineData("abc:somemsg;123", ":somemsg;")]
+        [InlineData("a;bc:somemsg;123", ":somemsg;")]
         public void StreamTransport_RaisesSingleEvent_AndIgnoresPartialMessages(string input, string output)
         {
             var m = new MemoryStream(Encoding.ASCII.GetBytes(input));

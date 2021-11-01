@@ -6,6 +6,9 @@
             EnsureDataLength(data, 4);
         }
 
-        public ushort DeviceNumber => (ushort)((Data[2] << 8) + Data[3]);
+        public ushort DeviceNumber {
+            get => GetUShort(2, 3);
+            set => SetUShort(value, 2, 3);
+        }
     }
 }

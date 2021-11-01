@@ -1,7 +1,6 @@
-﻿using Merg.Cbus.Communications;
-using System;
+﻿using System;
 
-namespace FcuCore.Communications
+namespace Merg.Cbus.Communications
 {
     public class CbusMessageEventArgs : EventArgs
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Merg.Cbus.Communications.OpCodeMessages
+﻿namespace Merg.Cbus.Communications.OpCodeMessages
 {
     [CbusMessage(OpCodes.Nnlrn)]
     public class SetNodeLearn : CbusMessageWithNodeNumber

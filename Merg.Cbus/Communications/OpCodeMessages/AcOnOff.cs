@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-using FcuCore.Communications;
-
-namespace Merg.Cbus.Communications.OpCodeMessages
+﻿namespace Merg.Cbus.Communications.OpCodeMessages
 {
     [CbusMessage(OpCodes.Acon)]
     public class AcOnMessage : CbusMessageWithNodeNumberAndEvent

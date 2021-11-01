@@ -76,13 +76,23 @@ namespace Merg.Cbus.Communications
             Data = data;
         }
 
+        protected ushort GetUShort(int upperByteIndex, int lowerByteIndex) => (ushort)((Data[upperByteIndex] << 8) + Data[lowerByteIndex]);
+
+        protected void SetUShort(ushort value, int upperByteIndex, int lowerByteIndex)
+        {
+            Data[upperByteIndex] = (byte)(value >> 8);
+            Data[lowerByteIndex] = (byte)value;
+        }
+
+        public bool GetBit(int byteIndex, byte bitMask) => (Data[byteIndex] & bitMask) == bitMask;
+
         public static CbusMessage FromTransportString(string transportString)
         {
 
 
             //:SB020N9101000005;
 
-            var p = 0;
+            var p = 1;
             if (transportString[p] != 'S') {
                 //non-standard, don't support yet
                 throw new NotImplementedException();
@@ -96,8 +106,8 @@ namespace Merg.Cbus.Communications
             var frametype = transportString[p] == 'N' ? FrameTypes.Normal : FrameTypes.Rtr;
             p++;
 
-            var dataBytes = new byte[(transportString.Length - p) / 2];
-            for (var x = 0; p < transportString.Length; p += 2, x++) {
+            var dataBytes = new byte[(transportString.Length - p - 1) / 2];
+            for (var x = 0; p < transportString.Length - 2; p += 2, x++) {
                 dataBytes[x] = Convert.ToByte(transportString.Substring(p, 2), 16);
             }
 

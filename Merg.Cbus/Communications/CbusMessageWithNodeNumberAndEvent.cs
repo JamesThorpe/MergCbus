@@ -6,13 +6,9 @@
             EnsureDataLength(data, 4);
         }
         
-        public ushort EventNumber
-        {
-            get => (ushort)((Data[2] << 8) + Data[3]);
-            set {
-                Data[2] = (byte)(value >> 8);
-                Data[3] = (byte)value;
-            }
+        public ushort EventNumber {
+            get => GetUShort(2, 3);
+            set => SetUShort(value, 2, 3);
         }
     }
 }

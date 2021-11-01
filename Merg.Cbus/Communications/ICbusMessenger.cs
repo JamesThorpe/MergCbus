@@ -1,8 +1,7 @@
-﻿using Merg.Cbus.Communications;
-using System;
+﻿using System;
 using System.Threading.Tasks;
 
-namespace FcuCore.Communications
+namespace Merg.Cbus.Communications
 {
     public interface ICbusMessenger
     {

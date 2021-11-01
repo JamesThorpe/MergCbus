@@ -1,6 +1,4 @@
 ﻿
-using System;
-
 namespace Merg.Cbus.Communications {
     public abstract class CbusMessageWithNodeNumber : CbusMessage
     {
@@ -10,11 +8,8 @@ namespace Merg.Cbus.Communications {
         }
 
         public ushort NodeNumber {
-            get => (ushort) ((Data[0] << 8) + Data[1]);
-            set {
-                Data[0] = (byte)(value >> 8);
-                Data[1] = (byte) value;
-            }
+            get => GetUShort(0, 1);
+            set => SetUShort(value, 0, 1);
         }
     }
 }

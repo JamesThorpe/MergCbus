@@ -56,6 +56,13 @@ messenger.MessageSent += (s, e) => {
     //Same as above, but is raised whenever a message is sent
     Console.WriteLine("-> " + e.Message);
 };
+
+
+// Send a message
+await messenger.SendMessage(new AcOnMessage {
+    NodeNumber = 2,
+    EventNumber = 1
+});
 ```
 
 #### Conversations

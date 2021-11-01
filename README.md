@@ -12,7 +12,7 @@ The underlying design principles for the library are to use modern .NET techniqu
 
 At the lowest level, to begin communicating with CBUS over a `Stream`, such as a COM port:
 
-```
+```C#
 using var sp = new SerialPort("COM3");
 sp.Open();
 
@@ -27,7 +27,7 @@ transport.TransportMessage += (s, e) => {
 
 Alternatively, (though currently untested), the following code would allow network communications with a shared [mergCbusServer](https://github.com/phillipsnj/mergCbusServer):
 
-```
+```C#
 using var ns = new TcpClient("localhost", 5550);
 using var transport = new StreamTransport(ns.GetStream());
 transport.Open();
@@ -37,7 +37,7 @@ transport.Open();
 
 The next level up provides message parsing functionality, to turn the messages retrieved from a transport provider (currently only `StreamTransport` into strongly typed messages):
 
-```
+```C#
 // pass in the previously created transport object
 var messenger = new CbusMessenger(transport);
 
@@ -69,7 +69,7 @@ await messenger.SendMessage(new AcOnMessage {
 
 The next level up provides a mechanism to send a message and expect a reply or replies:
 
-```
+```C#
 var mm = new MessageManager(messenger);
 // Wait for any number of replies to a message.  Returns after a timeout, default to 2 seconds - can be overridden.
 // You can also pass the expected number of replies, and it will return immediately upon receiving that number
